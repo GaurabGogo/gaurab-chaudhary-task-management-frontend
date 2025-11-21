@@ -1,17 +1,13 @@
 "use client";
 import { TaskCard } from "@/components/task-card";
-import { setTasks } from "@/redux/features/task/task-slice";
-import { useAppDispatch } from "@/redux/hooks";
 import { useGetMyTasksQuery } from "@/redux/services/task/task-api";
 import { Loader } from "lucide-react";
 import { useQueryState } from "nuqs";
-import { useEffect } from "react";
 import PaginationComponent from "./common/Pagination";
 
 const LIMIT = 5;
 
 export function TaskList() {
-  const dispatch = useAppDispatch();
   const [page] = useQueryState("page");
 
   const [sort] = useQueryState("sort", {
@@ -31,12 +27,6 @@ export function TaskList() {
     sort,
     priority,
   });
-
-  useEffect(() => {
-    if (taskData?.data) {
-      dispatch(setTasks(taskData.data));
-    }
-  }, [taskData, dispatch]);
 
   if (isTaskLoading) {
     return (

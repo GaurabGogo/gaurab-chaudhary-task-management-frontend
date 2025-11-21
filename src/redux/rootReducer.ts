@@ -2,7 +2,6 @@ import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // Uses localStorage
 import authReducer from "./features/auth/auth-slice";
-import taskReducer from "./features/task/task-slice";
 import { authApi } from "./services/auth/auth-api";
 import { taskApi } from "./services/task/task-api";
 import { userApi } from "./services/user/user-api";
@@ -16,7 +15,6 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  tasks: taskReducer,
   [authApi.reducerPath]: authApi.reducer,
   [userApi.reducerPath]: userApi.reducer,
   [taskApi.reducerPath]: taskApi.reducer,

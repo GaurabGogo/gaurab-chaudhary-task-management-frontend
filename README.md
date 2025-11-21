@@ -2,6 +2,10 @@
 
 A modern, responsive task management application built with **Next.js 16**, **TypeScript**, **Redux Toolkit**, and **TailwindCSS**. Features secure JWT authentication, real-time task management, and a beautiful UI with dark/light theme support.
 
+## Backend
+
+[Task Manager Backend](https://github.com/GaurabGogo/gaurab-chaudhary-task-management-backend)
+
 ---
 
 ## 🚀 Features
@@ -17,17 +21,17 @@ A modern, responsive task management application built with **Next.js 16**, **Ty
 
 ## 🛠️ Tech Stack
 
-| Category | Technologies |
-|----------|-------------|
-| **Framework** | Next.js 16 (App Router) |
-| **Language** | TypeScript 5 |
-| **Styling** | TailwindCSS 4, SASS |
+| Category             | Technologies                                 |
+| -------------------- | -------------------------------------------- |
+| **Framework**        | Next.js 16 (App Router)                      |
+| **Language**         | TypeScript 5                                 |
+| **Styling**          | TailwindCSS 4, SASS                          |
 | **State Management** | Redux Toolkit, Redux Persist, TanStack Query |
-| **UI Components** | Radix UI, shadcn/ui, Lucide React |
-| **Form Handling** | React Hook Form, Zod validation |
-| **HTTP Client** | Axios |
-| **Date Handling** | date-fns, Luxon |
-| **Code Quality** | ESLint, Prettier |
+| **UI Components**    | Radix UI, shadcn/ui, Lucide React            |
+| **Form Handling**    | React Hook Form, Zod validation              |
+| **HTTP Client**      | Axios                                        |
+| **Date Handling**    | date-fns, Luxon                              |
+| **Code Quality**     | ESLint, Prettier                             |
 
 ---
 
@@ -55,18 +59,21 @@ gaurab-chaudhary-frontend/
 ## 🔧 Setup Instructions
 
 ### Prerequisites
+
 - **Node.js** 20.x or higher
 - **pnpm** (recommended) or npm/yarn
 
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/GaurabGogo/gaurab-chaudhary-task-management-frontend.git
    cd gaurab-chaudhary-task-management-frontend
    ```
 
 2. **Install dependencies**
+
    ```bash
    pnpm install
    # or
@@ -74,8 +81,9 @@ gaurab-chaudhary-frontend/
    ```
 
 3. **Environment Configuration**
-   
+
    Create a `.env` file in the root directory:
+
    ```env
    NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1
    ```
@@ -83,6 +91,7 @@ gaurab-chaudhary-frontend/
    > **Note**: Update `NEXT_PUBLIC_API_URL` to point to your backend API URL.
 
 4. **Run the development server**
+
    ```bash
    pnpm dev
    # or
@@ -90,42 +99,52 @@ gaurab-chaudhary-frontend/
    ```
 
 5. **Open your browser**
-   
+
    Navigate to [http://localhost:3000](http://localhost:3000)
 
 ---
 
 ## 📜 Available Scripts
 
-| Command | Description |
-|---------|-------------|
-| `pnpm dev` | Start development server on `http://localhost:3000` |
-| `pnpm build` | Build production-ready application |
-| `pnpm start` | Start production server (requires build first) |
-| `pnpm lint` | Run ESLint to check code quality |
+| Command      | Description                                         |
+| ------------ | --------------------------------------------------- |
+| `pnpm dev`   | Start development server on `http://localhost:3000` |
+| `pnpm build` | Build production-ready application                  |
+| `pnpm start` | Start production server (requires build first)      |
+| `pnpm lint`  | Run ESLint to check code quality                    |
 
 ---
 
 ## 🔐 Authentication
 
 ### Token Storage Strategy
+
 This application uses **HTTP-only cookies** for storing JWT tokens:
 
 **Why HTTP-only cookies over localStorage?**
+
 - ✅ Protection against XSS attacks (JavaScript cannot access cookies)
 - ✅ Automatic inclusion in requests
 - ✅ Secure flag in production (HTTPS only)
 
 ### Features
+
 - Automatic token refresh on expiry
 - Seamless retry of failed requests
 - Automatic redirect to login when unauthorized
 
 ---
 
+## Preview
+
+![Preview](./demo/image1.png)
+![Preview](./demo/image2.png)
+![Preview](./demo/image3.png)
+
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
+
 1. Push your code to GitHub
 2. Import project in [Vercel](https://vercel.com)
 3. Add environment variable: `NEXT_PUBLIC_API_URL`
@@ -138,11 +157,13 @@ vercel
 ```
 
 ### Netlify
+
 1. Build: `pnpm build`
 2. Deploy the `.next` folder
 3. Add environment variables in Netlify dashboard
 
 ### Environment Variables for Production
+
 ```env
 NEXT_PUBLIC_API_URL=https://your-backend-api.com/api
 ```

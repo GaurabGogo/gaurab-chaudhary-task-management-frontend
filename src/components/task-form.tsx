@@ -30,6 +30,13 @@ interface TaskFormProps {
   isLoading: boolean;
 }
 
+function toLocalInputValue(date: string) {
+  const d = new Date(date);
+  const offset = d.getTimezoneOffset();
+  const local = new Date(d.getTime() - offset * 60000);
+  return local.toISOString().slice(0, 16);
+}
+
 const taskSchema = z.object({
   title: z
     .string()
@@ -168,12 +175,7 @@ export function TaskForm({ onSubmit, initialTask, isLoading }: TaskFormProps) {
                     <Input
                       type="datetime-local"
                       className="bg-input text-foreground"
-                      {...field}
-                      value={
-                        field.value
-                          ? new Date(field.value).toISOString().slice(0, 16)
-                          : ""
-                      }
+                      value={field.value ? toLocalInputValue(field.value) : ""}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
                   </FormControl>
@@ -187,7 +189,7 @@ export function TaskForm({ onSubmit, initialTask, isLoading }: TaskFormProps) {
             <Button
               type="submit"
               className="flex-1 gap-2"
-              disabled={!form.formState.isValid}
+              disabled={!form.formState.isValid || isLoading}
             >
               {isLoading ? (
                 <>

@@ -120,7 +120,7 @@ export default function AuthForm() {
 
           <Button
             type="submit"
-            className="w-full bg-sky-400 hover:bg-sky-500"
+            className="w-full"
             disabled={form.formState.isSubmitting}
           >
             {form.formState.isSubmitting ? "Signing In..." : "Sign In"}

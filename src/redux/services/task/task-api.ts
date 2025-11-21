@@ -27,30 +27,42 @@ export const taskApi = createApi({
           ...(priority && { priority }),
         },
       }),
-      providesTags: ["Task"],
+      providesTags: (result) =>
+        result
+          ? [
+              { type: "Task", id: "LIST" },
+              ...result.data.map((t) => ({ type: "Task", id: t.id })),
+            ]
+          : [{ type: "Task", id: "LIST" }],
     }),
+
     createTask: builder.mutation<TaskResponse, Partial<Task>>({
-      query: (task: Task) => ({
+      query: (task) => ({
         url: "tasks",
         method: "POST",
         body: task,
       }),
-      invalidatesTags: ["Task"],
+      invalidatesTags: [{ type: "Task", id: "LIST" }],
     }),
+
     updateTask: builder.mutation<TaskResponse, Partial<Task>>({
-      query: (task: Task) => ({
+      query: (task) => ({
         url: `tasks/${task.id}`,
         method: "PUT",
         body: task,
       }),
-      invalidatesTags: ["Task"],
+      invalidatesTags: (result, error, task) => [{ type: "Task", id: task.id }],
     }),
+
     deleteTask: builder.mutation<TaskResponse, Partial<Task>>({
-      query: (task: Task) => ({
+      query: (task) => ({
         url: `tasks/${task.id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Task"],
+      invalidatesTags: (result, error, task) => [
+        { type: "Task", id: task.id },
+        { type: "Task", id: "LIST" },
+      ],
     }),
   }),
 });
