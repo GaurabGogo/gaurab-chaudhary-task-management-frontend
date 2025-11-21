@@ -1,7 +1,21 @@
 {
-  "name": "gaurab-chaudhary-frontend",
+  "name": "gaurab-chaudhary-task-management-frontend",
+  "description": "This is a frontend for Task Manager",
   "version": "0.1.0",
   "private": true,
+   "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GaurabGogo/gaurab-chaudhary-task-management-frontend.git"
+  },
+  "homepage": "https://github.com/GaurabGogo/gaurab-chaudhary-task-management-frontend.git#readme",
+  "keywords": [
+    "nextjs",
+    "typescript",
+    "redux",
+    "tailwindcss"
+  ],
+  "author": "xGogo",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

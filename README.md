@@ -1,36 +1,187 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Task Manager Dashboard - Frontend
 
-## Getting Started
+A modern, responsive task management application built with **Next.js 16**, **TypeScript**, **Redux Toolkit**, and **TailwindCSS**. Features secure JWT authentication, real-time task management, and a beautiful UI with dark/light theme support.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Features
+
+- ✅ **User Authentication** - JWT-based login/registration with HTTP-only cookies
+- 📋 **Task Management** - Create, read, update, and delete tasks
+- 🎨 **Visual Indicators** - Highlight overdue tasks
+- 🔍 **Sorting & Filtering** - Sort by date/priority with pagination
+- 📱 **Responsive Design** - Works on mobile, tablet, and desktop
+- ⚡ **Modern UI** - Built with Radix UI and shadcn/ui components
+
+---
+
+## 🛠️ Tech Stack
+
+| Category | Technologies |
+|----------|-------------|
+| **Framework** | Next.js 16 (App Router) |
+| **Language** | TypeScript 5 |
+| **Styling** | TailwindCSS 4, SASS |
+| **State Management** | Redux Toolkit, Redux Persist, TanStack Query |
+| **UI Components** | Radix UI, shadcn/ui, Lucide React |
+| **Form Handling** | React Hook Form, Zod validation |
+| **HTTP Client** | Axios |
+| **Date Handling** | date-fns, Luxon |
+| **Code Quality** | ESLint, Prettier |
+
+---
+
+## 📁 Project Structure
+
+```
+gaurab-chaudhary-frontend/
+├── src/
+│   ├── app/                    # Next.js App Router
+│   │   ├── (auth)/            # Authentication routes (login, signup)
+│   │   ├── (main)/            # Main application routes (dashboard)
+│   │   └── layout.tsx         # Root layout
+│   ├── components/            # Reusable UI components
+│   ├── redux/                # Redux store & slices
+│   ├── services/             # API services
+│   ├── models/               # TypeScript interfaces
+│   ├── hooks/                # Custom React hooks
+│   └── utils/                # Utility functions
+├── public/                   # Static assets
+└── package.json              # Dependencies
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔧 Setup Instructions
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
+- **Node.js** 20.x or higher
+- **pnpm** (recommended) or npm/yarn
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/GaurabGogo/gaurab-chaudhary-task-management-frontend.git
+   cd gaurab-chaudhary-task-management-frontend
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Install dependencies**
+   ```bash
+   pnpm install
+   # or
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Environment Configuration**
+   
+   Create a `.env` file in the root directory:
+   ```env
+   NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1
+   ```
 
-## Deploy on Vercel
+   > **Note**: Update `NEXT_PUBLIC_API_URL` to point to your backend API URL.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Run the development server**
+   ```bash
+   pnpm dev
+   # or
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. **Open your browser**
+   
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 📜 Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `pnpm dev` | Start development server on `http://localhost:3000` |
+| `pnpm build` | Build production-ready application |
+| `pnpm start` | Start production server (requires build first) |
+| `pnpm lint` | Run ESLint to check code quality |
+
+---
+
+## 🔐 Authentication
+
+### Token Storage Strategy
+This application uses **HTTP-only cookies** for storing JWT tokens:
+
+**Why HTTP-only cookies over localStorage?**
+- ✅ Protection against XSS attacks (JavaScript cannot access cookies)
+- ✅ Automatic inclusion in requests
+- ✅ Secure flag in production (HTTPS only)
+
+### Features
+- Automatic token refresh on expiry
+- Seamless retry of failed requests
+- Automatic redirect to login when unauthorized
+
+---
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+1. Push your code to GitHub
+2. Import project in [Vercel](https://vercel.com)
+3. Add environment variable: `NEXT_PUBLIC_API_URL`
+4. Deploy
+
+```bash
+# Or use Vercel CLI
+pnpm install -g vercel
+vercel
+```
+
+### Netlify
+1. Build: `pnpm build`
+2. Deploy the `.next` folder
+3. Add environment variables in Netlify dashboard
+
+### Environment Variables for Production
+```env
+NEXT_PUBLIC_API_URL=https://your-backend-api.com/api
+```
+
+---
+
+## 🧪 Testing Checklist
+
+- [ ] User registration and login
+- [ ] Token refresh on session expiry
+- [ ] Create, edit, and delete tasks
+- [ ] Sort tasks by date and priority
+- [ ] Pagination navigation
+- [ ] Overdue task highlighting
+
+---
+
+## 📝 Code Quality
+
+- **ESLint** - Next.js recommended rules with TypeScript strict mode
+- **Prettier** - Automatic code formatting with TailwindCSS class sorting
+- **TypeScript** - Full type safety across the application
+
+---
+
+## 👨‍💻 Author
+
+**xGogo**
+
+---
+
+## 🙏 Acknowledgments
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [Radix UI](https://www.radix-ui.com/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+
+---
+
+**Built with ❤️ using Next.js and TypeScript**
