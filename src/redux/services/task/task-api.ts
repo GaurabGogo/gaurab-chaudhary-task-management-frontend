@@ -30,10 +30,10 @@ export const taskApi = createApi({
       providesTags: (result) =>
         result
           ? [
-              { type: "Task", id: "LIST" },
-              ...result.data.map((t) => ({ type: "Task", id: t.id })),
+              { type: "Task", id: "LIST" } as const,
+              ...result.data.map((t) => ({ type: "Task", id: t.id }) as const),
             ]
-          : [{ type: "Task", id: "LIST" }],
+          : [{ type: "Task", id: "LIST" } as const],
     }),
 
     createTask: builder.mutation<TaskResponse, Partial<Task>>({
