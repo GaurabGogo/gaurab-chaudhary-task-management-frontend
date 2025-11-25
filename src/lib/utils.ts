@@ -6,9 +6,8 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function isOverdue(endDate: string): boolean {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const taskDate = new Date(endDate);
-  taskDate.setHours(0, 0, 0, 0);
-  return taskDate < today;
+  const now = new Date();
+  const target = new Date(endDate);
+
+  return target.getTime() < now.getTime();
 }
