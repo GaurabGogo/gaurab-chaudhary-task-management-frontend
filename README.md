@@ -137,9 +137,9 @@ This application uses **HTTP-only cookies** for storing JWT tokens:
 
 ## Preview
 
-![Preview](./demo/image1.png)
-![Preview](./demo/image2.png)
-![Preview](./demo/image3.png)
+![Preview](./preview/image1.png)
+![Preview](./preview/image2.png)
+![Preview](./preview/image3.png)
 
 ## 🚀 Deployment
 
